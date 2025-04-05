@@ -1,5 +1,7 @@
 FROM python:latest
+# do not write byte code means .pyc file ko nai likhega 
 ENV PYTHONDONTWRITEBYTECODE=1
+# unbufffererd mode pe chalaega 
 ENV PYTHONUNBUFFERED=1
 WORKDIR /dockerdjangosetup
 COPY requirements.txt /dockerdjangosetup/
