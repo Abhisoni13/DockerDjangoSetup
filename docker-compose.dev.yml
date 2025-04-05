@@ -4,13 +4,14 @@ services:
     image: mysql
     restart: always
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=newdb
       - MYSQL_USER=abhi
       - MYSQL_PASSWORD=Hello123456
     volumes:
+    # ./mysql_data ye yaha vs code bhi ban jaye jisse apan bhi access kar sake 
       - ./mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
@@ -26,6 +27,8 @@ services:
     ports:
       - "8080:80"
     environment:
+    # pma_host ==> matalab kis database m kaam karna hai 
+    # pma_arbitory=1 // agar deta toh wo khud se dhundta ki kaha mysql container hai usse use karunga 
       PMA_HOST: mysql_db
       MYSQL_ROOT_PASSWORD: root
     depends_on:
